@@ -1,0 +1,17 @@
+{
+  "name": "gulp-sass-browser-sync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp"
+  },
+  "keywords": [],
+  "author": "Nimish",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  }
+}
