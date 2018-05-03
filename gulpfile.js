@@ -1,6 +1,8 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
+var cleanCSS 	= require('gulp-clean-css');
+var rename 		= require('gulp-rename');
 
 // Static Server + watching scss/html files
 gulp.task('serve', function() {
@@ -21,4 +23,14 @@ gulp.task('sass', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['sass', 'serve']);
+gulp.task('minify-css', () => {
+  return gulp.src("scss/styles.scss")
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(rename({
+            suffix: '.min',
+            extname: ".css"
+        }))
+    .pipe(gulp.dest('public/css'));
+});
+
+gulp.task('default', ['sass','minify-css', 'serve']);
